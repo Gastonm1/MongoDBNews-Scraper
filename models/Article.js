@@ -1,15 +1,23 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var blogSchema = new Schema({
-  title:  String,
-  author: String,
-  body:   String,
-  comments: [{ body: String, date: Date }],
-  date: { type: Date, default: Date.now },
-  hidden: Boolean,
-  meta: {
-    votes: Number,
-    favs:  Number
+var ArticleSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  // `link` is required and of type String
+  link: {
+    type: String,
+    required: true
+  },
+  note: {
+    type: Schema.Types.ObjectId,
+    ref: "Note"
   }
 });
+
+var Article = mongoose.model("Article", ArticleSchema);
+
+// Export the Article model
+module.exports = Article;
