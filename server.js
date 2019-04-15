@@ -37,7 +37,7 @@ app.get("/scrape", function(req, res) {
       $(".itemlist tbody").each(function(i, element) {
         //   console.log(element)
 
-        // Save an empty result objectc
+        // Save an empty result object
         var result = {};
   
         // Add the text and href of every link, and save them as properties of the result object
@@ -45,6 +45,7 @@ app.get("/scrape", function(req, res) {
           .children("tr")
           .text();
           console.log(result.title.split("\n"))
+          result.title.split("\n");
         // result.link = $(this)
         //   .children("a")
         //   .attr("href");
